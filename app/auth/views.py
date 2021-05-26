@@ -35,24 +35,20 @@ def signup():
 @auth.route('/signup', methods=['POST'])
 def signup_post():
     email = request.form.get('email')
-    username = request.form.get('username')
     password = request.form.get('password')
-    tel = request.form.get('tel')
     firstname = request.form.get('firstname')
     surname = request.form.get('surname')
     
 
     email_check = Users.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
-    user_check = Users.query.filter_by(username=username).first() # if this returns a user, then the username already exists in database
-    tel_check = Users.query.filter_by(tel=tel).first() # if this returns user, then the tel already exists in database
-    data_to_validate = [(email_check, email), (user_check, username),(tel_check, tel)]
+    data_to_validate = [(email_check, email)]
 
     for data in data_to_validate:
         if data[0]:
             flash(f'{data[1]} is not available')
             return redirect(url_for('auth.signup'))
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-    new_user = Users(email=email, username=username, password=generate_password_hash(password, method='sha256'), tel=tel, firstname=firstname, surname=surname)
+    new_user = Users(email=email,password=generate_password_hash(password, method='sha256'), firstname=firstname, surname=surname)
 
     # add the new user to the database
     db.session.add(new_user)

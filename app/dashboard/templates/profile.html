@@ -1,46 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Bonjour {{firstname.capitalize()}}!</h1>
-{% if addresses %}
-<h2>Mes addresses :</h2>
-<ul class="address-boxes">
-{% for address in addresses %}
-  <li class="addressbox addressboxshadow">
-    <h2>Addresse :</br> {{address.name}}</h2>
-    <canvas id="id{{address.name}}" class="qrcodes"></canvas>
-    <div class="act-areas">
-      <button class="button is-warning">modifier</button>
-      <button class="button is-danger">effacer</button>
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Ajouter une nouvelle adresse</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">create page</a>.
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/create">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" required name="name" placeholder="Nom de l'adresse" autofocus="">
+                </div>
+            </div>
+            
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="lat" required placeholder="Latitude" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="lng" required placeholder="Longitude" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="city" required placeholder="Ville" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="zip" required placeholder="Code postal" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="country" required placeholder="Pays">
+                </div>
+            </div>
+
+
+            <button class="button is-block is-info is-large is-fullwidth">S'inscrire</button>
+        </form>
     </div>
-  </li>
-  
-{% endfor %}
-
-{% endif %}
-<li class="addressbox addressboxshadow">
-<a href="{{ url_for('dashboard.create') }}">
-  <h2>Nouvelle adresse ?</h2>
-  <button class="button is-success">Enregistrez la</button>
-</a>
-</li>
-</ul>
-{% endblock %}
-
-<!-- <h2>ville : {{address.city}}</h2> -->
-<!-- méthode 1 pour les qrcodes : API (issue : trop lent, qrcode un par un) -->
-<!-- <img src="https://api.qrserver.com/v1/create-qr-code/?data={{address.qrcode_data}}&amp;size=100x100" alt="" title="" /> -->
-<!-- <h2>pays : {{address.country}}</h2> -->
-{% block scripts %}
-{% if addresses %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-{% for address in addresses %}
-<script>
-var qr = new QRious({
-  element: document.getElementById('id{{address.name}}'),
-  value: '{{address.qrcode_data}}'
-})
-</script>
-{% endfor %}
-{% endif %}
+</div>
 {% endblock %}
