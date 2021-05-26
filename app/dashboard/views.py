@@ -4,7 +4,6 @@ from flask_login import login_required, current_user
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login.utils import login_user
 from app import dashboard, db
-from app.qr_functions import keygen
 
 dashboard = Blueprint('dashboard', __name__, template_folder='templates')
 
