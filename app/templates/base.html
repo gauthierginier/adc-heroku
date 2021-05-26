@@ -16,6 +16,11 @@
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="{{ url_for('dashboard.index') }}">
+                          <img src="{{ url_for('static', filename='simplonlogo.png') }}" width="112" height="28">
+                        </a>
+                    </div>
 
                     <div class="navbar-end">
                         <a href="{{ url_for('dashboard.index') }}" class="navbar-item">
