@@ -5,6 +5,7 @@ body, .hero.is-primary{
 
 .navbar-item img {
     max-height: none;
+    height: 100ù;
 }
 
 .address-boxes{
@@ -68,4 +69,27 @@ canvas{
 
 .hero-head{
     margin-bottom: 25px;
+    background-color: #CE0033;
+}
+
+.control{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: lightgray solid 1px;
+}
+
+label.label{
+    font-weight: 400;
+}
+
+.control:last-child{
+    border-bottom: none;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.navbar-end a{
+    color: white;
 }

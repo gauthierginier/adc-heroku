@@ -14,8 +14,29 @@ def index():
 @dashboard.route('/profile', methods=['POST','GET'])
 @login_required
 def profile():
+    skills_devops=[
+        "Concevoir un système de veille technologique permettant de collecter, classifier et analyser l’information afin d’améliorer la prise de décisions techniques.",
+        "Assurer le versionnement d’un code source d’une application organisée en fonctionnalités et lots à l’aide d’un logiciel de contrôle de version de manière à garantir la fiabilité du code source dans un environnement multi-contributeurs",
+        "Contrôler l'exécution du code source à l’aide de tests et d’outils d’analyses statiques* du code source afin de minimiser le risque d’erreur dans un contexte de livraison continue",
+        "Automatiser les phases de tests unitaires et d’analyses statiques du code source lors du partage des sources à l’aide d’un outil d’intégration continue* de manière à prévenir les erreurs potentielles",
+        "Concevoir un processus de livraison continue à l’aide d’outils d’automatisation de manière à l’intégrer au processus de développement",
+        "Développer l’architecture d’une application en micro-services à l’aide d’outils et de bibliothèques logicielles adaptées afin de réduire la complexité globale du système",
+        "Concevoir un système de veille technologique permettant la collecte, la classification, l’analyse et la diffusion de l’information aux différents acteurs de l’organisation afin d’améliorer la prise de décisions techniques",
+        "Accompagner les collaborateurs au sein de l’équipe projet dans la sensibilisation et l’acculturation des méthodes d’organisation et de production DevOps de manière à optimiser le cycle de livraison d’un projet"
+    ]
+    skills_devcloud=[
+        "Développer des programmes et scripts simples",
+        "Analyser une infrastructure réseau simple",
+        "Utiliser les machines virtuelles (serveurs web, de base de données…)",
+        "Développer une application simple pour le cloud en exploitant les outils de développement de la plateforme (PaaS et SaaS)",
+        "Déployer une application sur le cloud",
+        "Analyser un besoin en développement d’application cloud",
+        "Développer une application cloud native",
+        "Sécuriser une applications à tous les niveaux en environnement cloud",
+        "Optimiser une application cloud native"
+    ]
     skills = Skills.query.filter_by(person_id=current_user.id).all()
-    return render_template('profile.html', firstname=current_user.firstname, skills=skills)
+    return render_template('profile.html', firstname=current_user.firstname, skills=skills, skills_devcloud=skills_devcloud, skills_devops=skills_devops)
 
 # @dashboard.route('/create')
 # @login_required
