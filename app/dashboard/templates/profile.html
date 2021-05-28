@@ -123,20 +123,35 @@ var chart = new Chart(ctx, {
     options: {
       maintainAspectRatio: false,
       responsive:true,
-        legend: {
+      legend: {
             display: true},
             tooltips: {
+                intersect : false,
+                mode : 'index',
               enable:true
             },
       scales: {
-      yAxes:[{
-        ticks: {
-          beginAtZero: true,
-        steps: 1,
-        stepValue: 1,
-         max: 3
-      }}],
-        xAxes: [{display: false}],
+        yAxes:[{
+            ticks: {
+              min: 0,
+              max: 3,
+              stepSize: 1,
+              callback: function(value, index, values) {
+                  var labels = [
+                      "Transposer",
+                      "Adapter",
+                      "Imiter",
+                      "Non-Acquis"
+                  ]
+                  return labels[index]
+                    }
+          }
+        }],
+        xAxes: [{
+            ticks: {
+                display: false,
+            }
+        }],
       }}
           });
 
@@ -171,16 +186,27 @@ var chart2 = new Chart(ctx2, {
         legend: {
             display: true},
             tooltips: {
+                intersect : false,
+                mode : 'index',
               enable:true
             },
       scales: {
-      yAxes:[{
-        ticks: {
-          beginAtZero: true,
-        steps: 1,
-        stepValue: 1,
-         max: 3
-      }}],
+        yAxes:[{
+            ticks: {
+              min: 0,
+              max: 3,
+              stepSize: 1,
+              callback: function(value, index, values) {
+                  var labels = [
+                      "Transposer",
+                      "Adapter",
+                      "Imiter",
+                      "Non-Acquis"
+                  ]
+                  return labels[index]
+                    }
+          }
+        }],
         xAxes: [{display: false}],
       }}
           });
