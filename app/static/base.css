@@ -23,7 +23,7 @@ body, .hero.is-primary{
 }
 
 .hero.is-primary a.navbar-item:hover{
-    background-color: rgba(197, 197, 197, 0.90);
+    background-color: #b8002e;
 }
 .hero-body{
     padding: 0;
@@ -70,12 +70,31 @@ canvas{
 .hero-head{
     margin-bottom: 25px;
     background-color: #CE0033;
+    position: fixed;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    z-index: 3;
+    color: white;
+}
+
+.hero-head *{
+    height: 100%;
 }
 
 .control{
     padding-bottom: 15px;
     margin-bottom: 15px;
     border-bottom: lightgray solid 1px;
+}
+
+.column, .column *{
+    /* top: 70px; */
+    z-index: 2;
+}
+
+.column{
+    margin-top: 70px;
 }
 
 label.label{
@@ -92,4 +111,34 @@ label.label{
 
 .navbar-end a{
     color: white;
+}
+
+video
+{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    z-index: 0;
+}
+
+.hero.is-primary .greytitle{
+    /* background-color:rgba(0,0,0,0.1); */
+    color:#CE0033;
+    /* text-shadow: rgb(255, 255, 255) 1px 0 5px; */
+    /* -webkit-text-stroke: 2px #CE0033; */
+}
+
+.select:not(.is-multiple):not(.is-loading)::after{
+    border-color: #CE0033;
+}
+
+.button.is-info{
+    background-color: #CE0033;
+} 
+
+.button.is-info:hover{
+    background-color: #b8002e;
 }
