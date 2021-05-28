@@ -7,3 +7,6 @@ Flask-SQLAlchemy==2.5.1
 uWSGI==2.0.19.1
 pytest==6.2.4
 psycopg2-binary ## psycopg2 or install postgresql before depending on your system
+recommonmark
+Sphinx
+sphinx-sizzle-theme

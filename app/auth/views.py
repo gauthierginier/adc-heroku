@@ -9,6 +9,10 @@ auth = Blueprint('auth', __name__, template_folder='templates')
 
 @auth.route('/login')
 def login():
+    """ Login page 
+    
+    :returns: template file
+    """
     return render_template('login.html')
 
 @auth.route('/login', methods=['POST'])
