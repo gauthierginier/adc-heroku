@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
 <div class="column is-three-fifths is-offset-one-fifth">
+    {% if messages %}
+        <div class="notification is-success">
+            {{ messages[0] }}.
+        </div>
+    {% endif %}
+    {% endwith %}
+    <div class="box chart-container">
+        <canvas id="myChartdevops"></canvas>
+    </div>
+    <div class="box chart-container">
+        <canvas id="myChartdevcloud"></canvas>
+    </div>
     <div class="box">
         <h3 class="title greytitle is-2">Modifier mes compétences</h3>
     </div>
     <div class="box">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="notification is-danger">
-                {{ messages[0] }}.
-            </div>
-        {% endif %}
-        {% endwith %}
         <form method="POST" action="">
             <div class="field">
                 <h4 class="title is-4">Référentiel : DevOps</h4>
@@ -20,11 +26,11 @@
                 <div class="control">
                     <label class="label"><span class="bold">C{{loop.index}}. </span>{{skillname}}</label>
                     <div class="select">
-                        <select>
-                          <option>Non-acquis</option>
-                          <option>Niveau 1 : Imiter</option>
-                          <option>Niveau 2 : Adapter</option>
-                          <option>Niveau 3 : Transposer</option>
+                        <select name="{{skillname}}-devops" id="{{skillname}}">
+                            <option value="0">Non-acquis</option>
+                            <option value="1">Niveau 1 : Imiter</option>
+                            <option value="2">Niveau 2 : Adapter</option>
+                            <option value="3">Niveau 3 : Transposer</option>
                         </select>
                       </div>
                 </div>
@@ -38,11 +44,11 @@
                 <div class="control">
                     <label class="label"><span class="bold">C{{loop.index}}. </span>{{skillname}}</label>
                     <div class="select">
-                        <select>
-                          <option>Non-acquis</option>
-                          <option>Niveau 1 : Imiter</option>
-                          <option>Niveau 2 : Adapter</option>
-                          <option>Niveau 3 : Transposer</option>
+                        <select name="{{skillname}}-devcloud" id="{{skillname}}">
+                          <option value="0">Non-acquis</option>
+                          <option value="1">Niveau 1 : Imiter</option>
+                          <option value="2">Niveau 2 : Adapter</option>
+                          <option value="3">Niveau 3 : Transposer</option>
                         </select>
                       </div>
                 </div>
@@ -59,4 +65,123 @@
 
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+var devopspoints = {{ devopspoints | tojson }}
+// console.log({{devopspoints | tojson}})
+var devopschart = []
+var devopspointschart = []
+for (const property in devopspoints) {
+//   console.log(`${property}: ${devopspoints[property]}`);
+    devopschart.push(property)
+    console.log(property)
+    document.getElementById(property).value = devopspoints[property]
+    devopspointschart.push(devopspoints[property])
+}
+
+var devcloudpoints = {{ devcloudpoints | tojson }}
+// console.log({{devcloudpoints | tojson}})
+var devcloudchart = []
+var devcloudpointschart = []
+for (const property in devcloudpoints) {
+//   console.log(`${property}: ${devcloudpoints[property]}`);
+    devcloudchart.push(property)
+    document.getElementById(property).value = devcloudpoints[property]
+    devcloudpointschart.push(devcloudpoints[property])
+}
+
+// console.log(devopspointschart)
+// console.log(devopschart)
+var ctx = document.getElementById('myChartdevops').getContext('2d');
+var ctx2 = document.getElementById('myChartdevcloud').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: devopschart,
+        legend:[
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+        ],
+  
+        datasets: [{
+            label: 'DevOps',
+            backgroundColor: 'rgb(206, 0, 51)',
+            borderColor: 'rgb(206, 0, 51)',
+            data: devopspointschart
+        }]
+    },
+  
+    // Configuration options go here
+    options: {
+      maintainAspectRatio: false,
+      responsive:true,
+        legend: {
+            display: true},
+            tooltips: {
+              enable:true
+            },
+      scales: {
+      yAxes:[{
+        ticks: {
+          beginAtZero: true,
+        steps: 1,
+        stepValue: 1,
+         max: 3
+      }}],
+        xAxes: [{display: false}],
+      }}
+          });
+
+var chart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: devcloudchart,
+        legend:[
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+        ],
+  
+        datasets: [{
+            label: 'DevCloud',
+            backgroundColor: 'rgb(206, 0, 51)',
+            borderColor: 'rgb(206, 0, 51)',
+            data: devcloudpointschart
+        }]
+    },
+  
+    // Configuration options go here
+    options: {
+      maintainAspectRatio: false,
+      responsive:true,
+        legend: {
+            display: true},
+            tooltips: {
+              enable:true
+            },
+      scales: {
+      yAxes:[{
+        ticks: {
+          beginAtZero: true,
+        steps: 1,
+        stepValue: 1,
+         max: 3
+      }}],
+        xAxes: [{display: false}],
+      }}
+          });
+</script>
 {% endblock %}
