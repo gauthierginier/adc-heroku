@@ -142,3 +142,19 @@ video
 .button.is-info:hover{
     background-color: #b8002e;
 }
+
+.chart-container{
+    width: 100% !important;
+    height:300px !important;
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+
+#myChart{
+    display: block !important; 
+  width: 900px !important;
+
+}

@@ -11,7 +11,7 @@ dashboard = Blueprint('dashboard', __name__, template_folder='templates')
 def index():
     return render_template('index.html')
 
-@dashboard.route('/profile', methods=['POST','GET'])
+@dashboard.route('/profile', methods=['GET'])
 @login_required
 def profile():
     skills_devops=[
@@ -36,7 +36,53 @@ def profile():
         "Optimiser une application cloud native"
     ]
     skills = Skills.query.filter_by(person_id=current_user.id).all()
-    return render_template('profile.html', firstname=current_user.firstname, skills=skills, skills_devcloud=skills_devcloud, skills_devops=skills_devops)
+    skillpoints = [i.points for i in skills]
+    devopspoints = skillpoints[:8]
+    devcloudpoints = skillpoints[8:]
+    # print(devopspoints, devcloudpoints)
+    devopspoints = dict(zip(skills_devops, devopspoints))
+    devcloudpoints = dict(zip(skills_devcloud, devcloudpoints))
+    print(devcloudpoints, devopspoints, sep="\n")
+    return render_template('profile.html', firstname=current_user.firstname, devopspoints=devopspoints, devcloudpoints=devcloudpoints, skills_devcloud=skills_devcloud, skills_devops=skills_devops)
+
+
+@dashboard.route('/profile', methods=['POST'])
+def profile_post():
+    present_skills = Skills.query.filter_by(person_id=current_user.id).all()
+    for i in present_skills:
+        db.session.delete(i)
+    db.session.commit()
+    # print("skills : ",present_skills)
+    future_skills = dict(request.form)
+    # print(future_skills)
+    for i in future_skills:
+        # print(i, future_skills.get(i))
+        new_skill = Skills(name=i.split("-")[0], person_id = current_user.id, ref=i.split("-")[-1], points=future_skills.get(i))
+        db.session.add(new_skill)
+    db.session.commit()
+    # password = request.form.get('password')
+    # firstname = request.form.get('firstname')
+    # surname = request.form.get('surname')
+    
+
+    # email_check = Users.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+    # data_to_validate = [(email_check, email)]
+
+    # for data in data_to_validate:
+    #     if data[0]:
+    #         flash(f'{data[1]} is not available')
+    #         return redirect(url_for('auth.signup'))
+    # # create a new user with the form data. Hash the password so the plaintext version isn't saved.
+    # new_user = Users(email=email,password=generate_password_hash(password, method='sha256'), firstname=firstname, surname=surname)
+
+    # # add the new user to the database
+    # db.session.add(new_user)
+    # db.session.commit()
+
+    flash(f'Vous compétences ont bien été modifiées')
+    return redirect(url_for('dashboard.profile'))
+
+
 
 # @dashboard.route('/create')
 # @login_required
