@@ -10,8 +10,9 @@ Welcome to adc-heroku's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   readme
+   README.md
    modules
+
 
 
 
