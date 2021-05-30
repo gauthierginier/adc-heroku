@@ -38,13 +38,13 @@ def index():
         # print([(int(i.points),i.name) for i in skill])
         moyennedevops.append(mean([int(i.points) for i in skill]))
     moyennedevops = dict(zip(skills_devcloud, moyennedevops))
-    print("moyenne devops",moyennedevops)
+    # print("moyenne devops",moyennedevops)
     for skill in skills_devcloud:
         skill = Skills.query.filter_by(name=skill).all()
         # print([(int(i.points),i.name) for i in skill])
         moyennedevcloud.append(mean([int(i.points) for i in skill]))
     moyennedevcloud = dict(zip(skills_devcloud, moyennedevcloud))
-    print("moyenne devcloud",moyennedevcloud)
+    # print("moyenne devcloud",moyennedevcloud)
     return render_template('index.html', skills_devcloud=skills_devcloud, skills_devops=skills_devops, devopspoints=moyennedevops, devcloudpoints=moyennedevcloud)
 
 @dashboard.route('/profile', methods=['GET'])
