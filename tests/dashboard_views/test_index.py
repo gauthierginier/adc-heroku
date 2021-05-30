@@ -10,6 +10,5 @@ def client():
         yield client
 
 def test_index(client):
-#     rv = client.get("/")
-#     assert rv.status_code == 200
-    assert 2==2
+    rv = client.get("/")
+    assert rv.status_code == 200
