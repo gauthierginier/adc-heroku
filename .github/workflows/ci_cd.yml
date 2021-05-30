@@ -27,8 +27,8 @@ jobs:
         env:
           FLASK_SECRET_KEY: lol
           DATABASE_URL2: sqlite:///db.sqlite
-        # run: |
-        #   python3 -m pytest -v
+        run: |
+          python3 -m pytest -v
 
       - run: |
           git fetch --prune --unshallow

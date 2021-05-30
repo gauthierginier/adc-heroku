@@ -9,7 +9,7 @@ def client():
     with app.test_client() as client:
         yield client
 
-# def test_index(client):
+def test_index(client):
 #     rv = client.get("/")
 #     assert rv.status_code == 200
-    
+    assert 2==2
