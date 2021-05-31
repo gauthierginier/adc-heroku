@@ -7,24 +7,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/cloud-native-lib/cloud-native-library">
-    <img src="images/logo.png" alt="Logo" width="300" height="200">
-  </a>
 
-  <h3 align="center">Cloud Native Library</h3>
+  <h3 align="center">Arbre de compétences</h3>
 
-  <p align="center">
-    Full serverless software that allows you to upload and download copyright-free books. This system automatically analyzes the content of texts according to simple rules.
-    <br />
-    <a href="https://github.com/cloud-native-lib/cloud-native-library"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/cloud-native-lib/cloud-native-library">View Demo</a>
-    ·
-    <a href="https://github.com/cloud-native-lib/cloud-native-library/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/cloud-native-lib/cloud-native-library/issues">Request Feature</a>
-  </p>
+<p align="center">
+  Web app that helps easily store and analyze in a graphical way skills from Simplon students.
+  <a href="https://github.com/gauthierginier/adc-heroku"><strong>Explore the docs »</strong></a>
+  <br />
+  <br />
+  <a href="https://github.com/gauthierginier/adc-heroku">View Demo</a>
+  ·
+  <a href="https://github.com/gauthierginier/adc-heroku/issues">Report Bug</a>
+  ·
+  <a href="https://github.com/gauthierginier/adc-heroku/issues">Request Feature</a>
+</p>
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -58,24 +54,25 @@
 ## About The Project
 
 <div style='display:flex;'>
-  <img src="https://media.giphy.com/media/KAq5w47R9rmTuvWOWa/giphy.gif" width="60" height="60" />
   <img src="https://media.giphy.com/media/xUA7b2OfgTuVzqpVXq/giphy.gif" width="60" height="60" />
 </div>
 
-To share **royalty-free** texts with as many people as possible, we want to obtain a prototype of an automated system, which scales **automatically**, and **requires little or no administration effort.**
 
 ### Built With
 
-- []()Azure Cloud
-- []()Azure functions
-- []()MySQL Azure
-- []()Blob trigger
-- []()API REST
-- []()Python 3.6
+- []()Heroku
+- []()Docker
+- []()Pytest
+- []()Postgresql
+- []()SqlAlchemy
+- []()Python
 - []()Flask
-- []()Bootstrap
+- []()UWSGI
+- []()Bulma
+- []()Chartjs
 - []()Javascript
-- []()Pep8
+- []()YML
+- []()Sphinx
 
 <!-- GETTING STARTED -->
 
@@ -90,37 +87,82 @@ To get a local copy up and running follow these simple steps.
   python version 3.6
   ```
 
+### Directory structure
+```sh
+  .
+├── app
+│   ├── auth
+│   │   └── templates
+│   ├── dashboard
+│   │   └── templates
+│   ├── static
+│   └── templates
+├── docs
+│   ├── build
+│   │   ├── doctrees
+│   │   └── html
+│   │       ├── _sources
+│   │       └── _static
+│   │           ├── css
+│   │           └── img
+│   └── source
+│       ├── _static
+│       └── _templates
+└── tests
+    └── dashboard_views
+
+20 directories
+
+```
+
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/cloud-native-lib/cloud-native-library
+   $ git clone https://github.com/gauthierginier/adc-heroku
    ```
-2. Create & activate virtual environment on Windows 10
+2. Create & activate virtual environment
    ```sh
-   python -m venv .env
+   $ python -m venv .venv
    ```
    ```sh
-   .env\Scripts\activate.bat
+   $ source .venv/bin/activate
    ```
 3. Install requirements.txt packages
    ```sh
-   python install -r requirements.txt
+   $ python install -r requirements.txt
    ```
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Tests
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. Create environnement variables. If you run flask application varibles will be recreated.
+  ```sh
+  $ export FLASK_SECRET_KEY=lol
+  ```
+  ```sh
+  $ export DATABASE_URL2=sqlite:///db.sqlite
+  ```
+2. Run tests from root directory
+  ```sh
+  $ python -m pytest -v
+  ```
+
+### Run flask application locally
+
+1. From root directory run:
+  ```sh
+  $ ./launch.sh
+  ```
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/cloud-native-lib/cloud-native-library/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/gauthierginier/adc-heroku/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -146,7 +188,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Gauthier Ginier, Adrian Ruiz, Nicolas Prodhomme
 
-Project Link: [https://github.com/cloud-native-lib/cloud-native-library](https://github.com/cloud-native-lib/cloud-native-library)
+Project Link: [https://github.com/gauthierginier/adc-heroku](https://github.com/gauthierginier/adc-heroku)
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -160,12 +202,12 @@ Project Link: [https://github.com/cloud-native-lib/cloud-native-library](https:/
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/cloud-native-lib/cloud-native-library.svg?style=for-the-badge
-[contributors-url]: https://github.com/cloud-native-lib/cloud-native-library/graphs/contributors
+[contributors-url]: https://github.com/gauthierginier/adc-heroku/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/cloud-native-lib/cloud-native-library.svg?style=for-the-badge
-[forks-url]: https://github.com/cloud-native-lib/cloud-native-library/network/members
+[forks-url]: https://github.com/gauthierginier/adc-heroku/network/members
 [stars-shield]: https://img.shields.io/github/stars/cloud-native-lib/cloud-native-library.svg?style=for-the-badge
-[stars-url]: https://github.com/cloud-native-lib/cloud-native-library/stargazers
+[stars-url]: https://github.com/gauthierginier/adc-heroku/stargazers
 [issues-shield]: https://img.shields.io/github/issues/cloud-native-lib/cloud-native-library.svg?style=for-the-badge
-[issues-url]: https://github.com/cloud-native-lib/cloud-native-library/issues
+[issues-url]: https://github.com/gauthierginier/adc-heroku/issues
 [license-shield]: https://img.shields.io/github/license/cloud-native-lib/cloud-native-library.svg?style=for-the-badge
-[license-url]: https://github.com/cloud-native-lib/cloud-native-library/blob/main/LICENSE.txt
+[license-url]: https://github.com/gauthierginier/adc-heroku/blob/main/LICENSE.txt
