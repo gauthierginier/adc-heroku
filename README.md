@@ -139,7 +139,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Tests
 
-1. Create environnement variables. If you run flask application varibles will be recreated.
+1. Create environnement variables. If you run flask application locally varibles will be recreated.
   ```sh
   $ export FLASK_SECRET_KEY=lol
   ```
@@ -186,7 +186,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Gauthier Ginier, Adrian Ruiz, Nicolas Prodhomme
+Gauthier Ginier, Adrian Ruiz, Nicolas Prodhomme et Abdul
 
 Project Link: [https://github.com/gauthierginier/adc-heroku](https://github.com/gauthierginier/adc-heroku)
 

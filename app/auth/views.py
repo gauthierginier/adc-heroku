@@ -9,14 +9,23 @@ auth = Blueprint('auth', __name__, template_folder='templates')
 
 @auth.route('/login')
 def login():
-    """ Login page 
+    """ Login page that contains a graph
+    with the average grades of the class.
     
+    :method: GET
     :returns: template file
+    :rtype: html file
     """
     return render_template('login.html')
 
 @auth.route('/login', methods=['POST'])
 def login_post():
+    """ Login page that lets user login
+
+    :method: POST
+    :returns: redirection to profile template
+    :rtype: html file
+    """
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
@@ -34,10 +43,23 @@ def login_post():
 
 @auth.route('/signup')
 def signup():
+    """ Signup page 
+
+    :Method: GET
+    :returns: template file
+    :rtype: html file
+    """
     return render_template('signup.html')
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
+    """ Signup page that lets the user signup
+
+    :Method: POST
+    :returns: redirection to login page
+    :rtype: html file
+    """
+
     email = request.form.get('email')
     password = request.form.get('password')
     firstname = request.form.get('firstname')
@@ -62,5 +84,10 @@ def signup_post():
 
 @auth.route('/logout')
 def logout():
+    """ Logout
+
+    :returns: redirection to index page
+    :rtype: html file
+    """
     logout_user()
     return redirect(url_for('dashboard.index'))
