@@ -32,7 +32,8 @@ release = '0.0.1'
 # ones.
 extensions = [
     'sphinx.ext.napoleon',
-    'recommonmark'
+    'recommonmark',
+    'sphinx.ext.githubpages'
 ]
 napoleon_google_docstring = False
 
