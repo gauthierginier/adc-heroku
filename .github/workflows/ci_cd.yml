@@ -43,7 +43,9 @@ jobs:
           git push heroku main -f
 
       - name: Building documentation
+        env:
+          working-directory: ./docs
         run: |
-          sphinx-apidoc -f -o docs/source/ app 
+          sphinx-apidoc -f -o source/ ../app 
           make html
-          
+        working-directory: ${{env.working-directory}}
