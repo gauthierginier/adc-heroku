@@ -44,6 +44,6 @@ jobs:
 
       - name: Building documentation
         run: |
-          sphinx-apidoc -f -o source/ ../app 
+          sphinx-apidoc -f -o docs/source/ /app 
           make html
           
