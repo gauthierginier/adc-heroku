@@ -46,7 +46,6 @@ jobs:
         env:
           working-directory: ./docs
         run: |
-          sphinx-apidoc -f -o source/ ../app 
           make html
         working-directory: ${{env.working-directory}}
 
