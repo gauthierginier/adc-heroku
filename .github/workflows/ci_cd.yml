@@ -49,3 +49,21 @@ jobs:
           sphinx-apidoc -f -o source/ ../app 
           make html
         working-directory: ${{env.working-directory}}
+
+
+      - name: Commit files
+        run: |
+          echo ${{ github.ref }}
+          git add .
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "CI: Automated build push" -a | exit 0
+
+
+      - name: Deploy Github pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: docs/build/html/
