@@ -22,6 +22,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      ######## Unittest ####################
+
       - name: Unittesting routes
         env:
           FLASK_SECRET_KEY: lol
