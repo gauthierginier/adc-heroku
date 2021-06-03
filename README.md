@@ -15,7 +15,7 @@
   <a href="https://gauthierginier.github.io/adc-heroku/"><strong>Explore the docs »</strong></a>
   <br />
   <br />
-  <a href="https://github.com/gauthierginier/adc-heroku">View Demo</a>
+  <a href="https://adc-simplon.herokuapp.com/">View Demo</a>
   ·
   <a href="https://github.com/gauthierginier/adc-heroku/issues">Report Bug</a>
   ·
