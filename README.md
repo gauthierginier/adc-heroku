@@ -12,7 +12,7 @@
 
 <p align="center">
   Web app that helps easily store and analyze in a graphical way skills from Simplon students.
-  <a href="https://github.com/gauthierginier/adc-heroku"><strong>Explore the docs »</strong></a>
+  <a href="https://gauthierginier.github.io/adc-heroku/"><strong>Explore the docs »</strong></a>
   <br />
   <br />
   <a href="https://github.com/gauthierginier/adc-heroku">View Demo</a>
@@ -84,7 +84,7 @@ To get a local copy up and running follow these simple steps.
 
 - Python
   ```sh
-  python version 3.6
+  python version 3.6 or greater.
   ```
 
 ### Directory structure
