@@ -10,6 +10,13 @@ dashboard = Blueprint('dashboard', __name__, template_folder='templates')
 
 @dashboard.route('/')
 def index():
+    """ Home Page containing graphics of the average of the class
+
+    :method: GET
+    :returns: template file
+    :rtype: html file
+    """
+
     skills_devops=[
         "Concevoir un système de veille technologique permettant de collecter, classifier et analyser l’information afin d’améliorer la prise de décisions techniques.",
         "Assurer le versionnement d’un code source d’une application organisée en fonctionnalités et lots à l’aide d’un logiciel de contrôle de version de manière à garantir la fiabilité du code source dans un environnement multi-contributeurs",
@@ -50,6 +57,13 @@ def index():
 @dashboard.route('/profile', methods=['GET'])
 @login_required
 def profile():
+    """ Profile Page containing graphics of the student grades.
+
+    :method: GET
+    :returns: template file
+    :rtype: html file
+    """
+
     skills_devops=[
         "Concevoir un système de veille technologique permettant de collecter, classifier et analyser l’information afin d’améliorer la prise de décisions techniques.",
         "Assurer le versionnement d’un code source d’une application organisée en fonctionnalités et lots à l’aide d’un logiciel de contrôle de version de manière à garantir la fiabilité du code source dans un environnement multi-contributeurs",
@@ -84,6 +98,13 @@ def profile():
 
 @dashboard.route('/profile', methods=['POST'])
 def profile_post():
+    """ Profile Page containing graphics of the average of the class and posibility to change grades.
+
+    :method: GET
+    :returns: template file
+    :rtype: html file
+    """
+
     present_skills = Skills.query.filter_by(person_id=current_user.id).all()
     for i in present_skills:
         db.session.delete(i)
