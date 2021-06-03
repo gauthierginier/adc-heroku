@@ -158,3 +158,17 @@ video
   width: 900px !important;
 
 }
+
+.apprenantsboxes{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.apprenantsboxes > .box{
+    width: 20%;
+    margin: 15px;
+}
