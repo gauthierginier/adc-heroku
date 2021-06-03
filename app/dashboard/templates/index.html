@@ -12,6 +12,16 @@
         <canvas id="myChartdevcloud"></canvas>
     </div>
     
+    <div class="box">
+      <h2 class="title is-3">Sélectionnez un apprenant pour découvrir ses compétences</h2>
+      <div class="apprenantsboxes">
+      {% for apprenant in apprenants %}
+      <div class="box">
+          <h2 class="">{{apprenant.firstname}}</h2>
+     </div>
+      {% endfor %}
+    </div>
+    </div>
 </div>
 {% endblock %}
 

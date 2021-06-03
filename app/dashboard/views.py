@@ -1,5 +1,5 @@
 from operator import ipow
-from app.models import Skills
+from app.models import Skills, Users
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login.utils import login_user
@@ -31,6 +31,7 @@ def index():
         "Sécuriser une applications à tous les niveaux en environnement cloud",
         "Optimiser une application cloud native"
     ]
+
     moyennedevops = []
     moyennedevcloud = []
     for skill in skills_devops:
@@ -45,7 +46,9 @@ def index():
         moyennedevcloud.append(mean([int(i.points) for i in skill]))
     moyennedevcloud = dict(zip(skills_devcloud, moyennedevcloud))
     # print("moyenne devcloud",moyennedevcloud)
-    return render_template('index.html', skills_devcloud=skills_devcloud, skills_devops=skills_devops, devopspoints=moyennedevops, devcloudpoints=moyennedevcloud)
+    apprenants = Users.query.all()
+    
+    return render_template('index.html', skills_devcloud=skills_devcloud, skills_devops=skills_devops, devopspoints=moyennedevops, devcloudpoints=moyennedevcloud, apprenants=apprenants)
 
 @dashboard.route('/profile', methods=['GET'])
 @login_required
