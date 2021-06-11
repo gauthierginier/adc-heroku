@@ -141,7 +141,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Create environnement variables. If you run flask application locally varibles will be recreated.
   ```sh
-  $ export FLASK_SECRET_KEY=lol
+  $ export FLASK_SECRET_KEY=personal_secret_string
   ```
   ```sh
   $ export DATABASE_URL2=sqlite:///db.sqlite
