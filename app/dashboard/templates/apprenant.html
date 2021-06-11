@@ -1,27 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="column is-three-fifths is-offset-one-fifth">
-  <div class="box">
-      <h3 class="title greytitle is-2">Moyenne de la promo</h3>
-  </div>
+<div class="column is-three-fifths is-offset-one-fifth"></div>
+    <div class="box">
+      <p>
+        {{apprenant.firstname.capitalize()}} {{apprenant.surname.capitalize()}}
+      </p>
+    </div>
     <div class="box chart-container">
         <canvas id="myChartdevops"></canvas>
     </div>
     <div class="box chart-container">
         <canvas id="myChartdevcloud"></canvas>
-    </div>
-    
-    <div class="box">
-      <h2 class="title is-3">Sélectionnez un apprenant pour découvrir ses compétences</h2>
-      <div class="apprenantsboxes">
-      {% for apprenant in apprenants %}
-      <a class="box" href="{{ url_for('dashboard.apprenant', apprenant=apprenant.firstname)}}">
-          <h2 class="">{{apprenant.firstname.capitalize()}}</h2>
-          <h2 class="">{{apprenant.surname.capitalize()}}</h2>
-      </a>
-      {% endfor %}
-    </div>
     </div>
 </div>
 {% endblock %}
@@ -30,24 +20,24 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-var devopspoints = {{devopspoints | tojson}}
-// console.log({{devopspoints | tojson}})
+var devopspoints = {{ devopspoints | tojson }}
+console.log({{devopspoints | tojson}})
 var devopschart = []
 var devopspointschart = []
 for (const property in devopspoints) {
-  // console.log(`${property}: ${devopspoints[property]}`);
+//   console.log(`${property}: ${devopspoints[property]}`);
     devopschart.push(property)
-    // console.log(property)
+    console.log(property)
     // document.getElementById(property).value = devopspoints[property]
     devopspointschart.push(devopspoints[property])
 }
 
 var devcloudpoints = {{ devcloudpoints | tojson }}
-// console.log({{devcloudpoints | tojson}})
+console.log({{devcloudpoints | tojson}})
 var devcloudchart = []
 var devcloudpointschart = []
 for (const property in devcloudpoints) {
-  console.log(`${property}: ${devcloudpoints[property]}`);
+//   console.log(`${property}: ${devcloudpoints[property]}`);
     devcloudchart.push(property)
     // document.getElementById(property).value = devcloudpoints[property]
     devcloudpointschart.push(devcloudpoints[property])
@@ -172,5 +162,6 @@ var chart2 = new Chart(ctx2, {
         xAxes: [{display: false}],
       }}
           });
+
 </script>
 {% endblock %}
